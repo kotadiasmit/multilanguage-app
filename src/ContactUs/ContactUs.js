@@ -2,10 +2,10 @@ import translate from "translate";
 import languageContext from "../Context/Context";
 import InitialContent from "./InitialContent";
 import NavBar from "../NavBar/NavBar";
-import "./NotFound.css";
+import "./ContactUs.css";
 import { useContext, useEffect, useState } from "react";
 
-const NotFound = () => {
+const ContactUs = () => {
   const { para, heading } = InitialContent;
   const { selectedLanguage } = useContext(languageContext);
   const [content, setContent] = useState(InitialContent);
@@ -25,11 +25,11 @@ const NotFound = () => {
   return (
     <>
       <NavBar />
-      <div className="not-found-container">
+      <div className="Contact-us-container">
         <img
-          src="https://assets.ccbp.in/frontend/react-js/not-found-blog-img.png"
-          alt="not found"
-          className="not-found-img"
+          src="https://media.istockphoto.com/id/1283050796/vector/flat-design-under-construction-concept.jpg?s=2048x2048&w=is&k=20&c=hZN3pZawWvu8-r-QCxiXPNdwBIU0ElU_HiUMago4h98="
+          alt="under construction"
+          className="construction-img"
         />
         <h1>{content.heading}</h1>
         <p>{content.para}</p>
@@ -38,4 +38,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default ContactUs;

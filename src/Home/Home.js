@@ -1,57 +1,54 @@
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import translate from "translate";
+import languageContext from "../Context/Context";
+import InitialContent from "./InitialContent";
 import NavBar from "../NavBar/NavBar";
 import "./Home.css";
-import { useContext } from "react";
-import languageContext from "../Context/Context";
 
 const Home = () => {
+  const { para, heading, shopNowBtn } = InitialContent;
   const { selectedLanguage } = useContext(languageContext);
+  const [content, setContent] = useState(InitialContent);
 
-  let heading = "";
-  let para = "";
-  let shopNowBtn = "";
-  switch (selectedLanguage) {
-    case "Arabic":
-      heading = "الملابس التي تجذب انتباهك";
-      para =
-        "الموضة هي جزء من الهواء اليومي ولا يساعد كثيرًا أن تتغير طوال الوقت. لطالما كانت الملابس علامة على العصر ونحن في ثورة. أزياءك تجعلك تُرى وتُسمع بهذه الطريقة. لذا ، احتفل بالمواسم بأزياء جديدة ومثيرة على طريقتك الخاصة.";
-      shopNowBtn = "تسوق الآن";
-      break;
-    case "Hebrew":
-      heading = "בגדים שגורמים לך לשים לב";
-      para =
-        "אופנה היא חלק מהאוויר היומיומי וזה לא ממש עוזר שהיא משתנה כל הזמן. בגדים תמיד היו סמן של התקופה ואנחנו נמצאים במהפכה. האופנה שלך גורמת לך לראות ולשמוע אותך כמו שאתה. אז, תחגוג את העונות האופנה החדשה והמרגשת בדרך שלך.";
-      shopNowBtn = "קנה עכשיו";
-      break;
-    default:
-      heading = "Clothes That Get YOU Noticed";
-      para =
-        "Fashion is part of the daily air and it does not quite help that it changes all the time. Clothes have always been a marker of the era and we are in a revolution. Your fashion makes you been seen and heard that way you are. So, celebrate the seasons new and exciting fashion in your own way.";
-      shopNowBtn = "Shop Now";
-      break;
-  }
+  useEffect(() => {
+    Translate();
+  }, [selectedLanguage]);
+
+  const Translate = async () => {
+    const translatedPara = await translate(para, selectedLanguage);
+    const translatedHeading = await translate(heading, selectedLanguage);
+    const translatedShopNowBtn = await translate(shopNowBtn, selectedLanguage);
+    setContent({
+      heading: translatedHeading,
+      para: translatedPara,
+      shopNowBtn: translatedShopNowBtn,
+    });
+  };
+  const changeDirection =
+    selectedLanguage === "Hebrew" || selectedLanguage === "Arabic";
   return (
     <>
       <NavBar />
-      <div className="home-container">
+      <div className="home-container" dir={changeDirection ? "rtl" : "ltr"}>
         <div className="home-content">
-          <h1 className="home-heading">{heading}</h1>
+          <h1 className="home-heading">{content.heading}</h1>
           <img
             src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-home-img.png"
             alt="clothes that get you noticed"
             className="home-mobile-img"
           />
-          <p className="home-description">{para}</p>
-          <Link to="/products">
+          <p className="home-description">{content.para}</p>
+          <Link to="/contact-us">
             <button type="button" className="shop-now-button">
-              {shopNowBtn}
+              {content.shopNowBtn}
             </button>
           </Link>
         </div>
         <img
           src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-home-img.png"
           alt="clothes that get you noticed"
-          className="home-desktop-img"
+          className={`home-desktop-img ${changeDirection ? "me-5" : "ms-5"}`}
         />
       </div>
     </>

@@ -1,4 +1,4 @@
-.not-found-container {
+.Contact-us-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7,6 +7,6 @@
   text-align: center;
 }
 
-.not-found-img {
+.construction-img {
   width: 300px;
 }

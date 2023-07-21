@@ -5,6 +5,7 @@ import NotFound from "./NotFound/NotFound";
 import Home from "./Home/Home";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import ContactUs from "./ContactUs/ContactUs";
 
 const App = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("English");
@@ -21,7 +22,7 @@ const App = () => {
       >
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/contact-us" element={<ContactUsPage />} /> */}
+          <Route path="/contact-us" element={<ContactUs />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </languageContext.Provider>
