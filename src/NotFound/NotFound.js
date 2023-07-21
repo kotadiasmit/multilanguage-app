@@ -1,9 +1,9 @@
+import { useContext, useEffect, useState } from "react";
 import translate from "translate";
 import languageContext from "../Context/Context";
-import InitialContent from "./InitialContent";
 import NavBar from "../NavBar/NavBar";
+import InitialContent from "./InitialContent";
 import "./NotFound.css";
-import { useContext, useEffect, useState } from "react";
 
 const NotFound = () => {
   const { para, heading } = InitialContent;

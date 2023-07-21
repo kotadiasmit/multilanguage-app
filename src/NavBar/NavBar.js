@@ -85,7 +85,7 @@ const NavBar = () => {
             <select
               value={selectedLanguage}
               onChange={onLanguageChange}
-              className="sel-language"
+              className={`sel-language ${changeDirection ? "" : "ms-2"}`}
             >
               <option
                 value="English"

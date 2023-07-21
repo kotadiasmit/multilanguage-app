@@ -1,11 +1,11 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import languageContext from "./Context/Context";
-import NotFound from "./NotFound/NotFound";
 import Home from "./Home/Home";
+import ContactUs from "./ContactUs/ContactUs";
+import NotFound from "./NotFound/NotFound";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import ContactUs from "./ContactUs/ContactUs";
 
 const App = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("English");
