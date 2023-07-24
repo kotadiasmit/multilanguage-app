@@ -69,7 +69,6 @@
   font-size: 18px;
   color: #64748b;
   margin-bottom: 0px;
-  /* text-align: start; */
 }
 @media screen and (max-width: 768px) {
   .home-description {
