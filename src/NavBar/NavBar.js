@@ -8,17 +8,17 @@ import InitialContent from "./InitialContent";
 import "./NavBar.css";
 
 const NavBar = () => {
-  const { home, contactUs, english, hindi, gujarati, hebrew, arabic } =
-    InitialContent;
+  const { home, contactUs } = InitialContent;
   const [content, setContent] = useState(InitialContent);
   const [isShowMenu, setIsShowMenu] = useState(false);
 
-  const { selectedLanguage, handleLanguageChange } =
+  const { selectedLanguage, handleLanguageChange, handleIsLoading } =
     useContext(languageContext);
 
   const onLanguageChange = (event) => {
     const { value } = event.target;
     handleLanguageChange(value);
+    handleIsLoading(true);
   };
 
   const showMenu = () => {
@@ -32,20 +32,10 @@ const NavBar = () => {
   const Translate = async () => {
     const translatedHome = await translate(home, selectedLanguage);
     const translatedContactUs = await translate(contactUs, selectedLanguage);
-    const translatedEnglish = await translate(english, "English");
-    const translatedHindi = await translate(hindi, "Hindi");
-    const translatedGujarati = await translate(gujarati, "Gujarati");
-    const translatedHebrew = await translate(hebrew, "Hebrew");
-    const translatedArabic = await translate(arabic, "Arabic");
 
     setContent({
       home: translatedHome,
       contactUs: translatedContactUs,
-      english: translatedEnglish,
-      hindi: translatedHindi,
-      gujarati: translatedGujarati,
-      hebrew: translatedHebrew,
-      arabic: translatedArabic,
     });
   };
   const changeDirection =
@@ -87,26 +77,21 @@ const NavBar = () => {
               onChange={onLanguageChange}
               className={`sel-language ${changeDirection ? "" : "ms-2"}`}
             >
-              <option
-                value="English"
-                className="language-opt"
-              >{`En ${content.english}`}</option>
-              <option
-                value="Hebrew"
-                className="language-opt"
-              >{`He ${content.hebrew}`}</option>
-              <option
-                value="Arabic"
-                className="language-opt"
-              >{`Ar ${content.arabic}`}</option>
-              <option
-                value="Hindi"
-                className="language-opt"
-              >{`Hi ${content.hindi}`}</option>
-              <option
-                value="Gujarati"
-                className="language-opt"
-              >{`Gu ${content.gujarati}`}</option>
+              <option value="English" className="language-opt">
+                En English
+              </option>
+              <option value="Hebrew" className="language-opt">
+                He עִברִית
+              </option>
+              <option value="Arabic" className="language-opt">
+                Ar عربي
+              </option>
+              <option value="Hindi" className="language-opt">
+                Hi हिंदी
+              </option>
+              <option value="Gujarati" className="language-opt">
+                Gu ગુજરાતી
+              </option>
             </select>
           </div>
         </div>

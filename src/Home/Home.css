@@ -77,14 +77,13 @@
   }
 }
 
-.shop-now-button {
+.contact-us-button {
   font-size: 14px;
   font-weight: 400;
   font-family: "Roboto";
   color: #ffffff;
   border: none;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding: 8px;
   border-radius: 6px;
   background-color: #0967d2;
   margin-top: 10px;
@@ -93,8 +92,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .shop-now-button {
-    width: 100px;
+  .contact-us-button {
     font-size: 16px;
   }
 }
